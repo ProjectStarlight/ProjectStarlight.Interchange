@@ -160,7 +160,7 @@ namespace ProjectStarlight.Interchange
         /// </summary>
         public void UpdateGIF()
         {
-            if (!IsPaused && !HasEnded) 
+            if (!IsPaused && !HasEnded)
                 ForwardTicks(1);
         }
 
@@ -178,7 +178,7 @@ namespace ProjectStarlight.Interchange
 
                 FrameTick = 0;
 
-                if (FrameIndex < Frames.Length - 1) 
+                if (FrameIndex < Frames.Length - 1)
                     FrameIndex++;
                 else if (ShouldLoop)
                     FrameIndex = 0;

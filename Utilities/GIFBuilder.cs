@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using XnaColor = Microsoft.Xna.Framework.Color;
 
@@ -74,10 +75,11 @@ namespace ProjectStarlight.Interchange.Utilities
                     for (int x = 0; x < width; x++)
                     for (int y = 0; y < height; y++)
                         framePixels[x, y] = gifFrame.GetPixel(x, y);
+                    framePixels = Flip(Rotate(framePixels));
 
                     int flatIndex = 0;
-                    for (int x = 0; x < framePixels.GetUpperBound(0); x++)
-                    for (int y = 0; y < framePixels.GetUpperBound(1); y++)
+                    for (int x = 0; x < height; x++)
+                    for (int y = 0; y < width; y++)
                         flattenedPixels[flatIndex++] = framePixels[x, y];
 
                     XnaColor[] usableColors = new XnaColor[flattenedPixels.Length];
@@ -93,8 +95,38 @@ namespace ProjectStarlight.Interchange.Utilities
                     frame.Dispose();
                 }
 
-                return new TextureGIF(trueFrames.ToArray(), ticksPerFrame);
+                return FromArray(trueFrames.ToArray(), ticksPerFrame);
             }
+        }
+
+        private static Color[,] Rotate(Color[,] src)
+        {
+            int width = src.GetUpperBound(0) + 1;
+            int height = src.GetUpperBound(1) + 1;
+            Color[,] value = new Color[height, width];
+
+            for (int row = 0; row < height; row++)
+            for (int col = 0; col < width; col++)
+            {
+                int newCol = height - (row + 1);
+                value[newCol, col] = src[col, row];
+            }
+
+
+            return value;
+        }
+
+        private static Color[,] Flip(Color[,] src)
+        {
+            int rows = src.GetUpperBound(0) + 1;
+            int cols = src.GetUpperBound(1) + 1;
+            Color[,] value = new Color[rows, cols];
+
+            for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                value[rows - 1 - i, j] = src[i, j];
+
+            return value;
         }
     }
 }
