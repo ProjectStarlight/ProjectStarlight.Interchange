@@ -54,9 +54,7 @@
     <Compile Include="Utilities\FrameUtilities.cs" />
     <Compile Include="Utilities\GIFBuilder.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utilities\DataStructures\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

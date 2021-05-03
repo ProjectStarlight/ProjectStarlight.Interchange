@@ -14,7 +14,9 @@ namespace ProjectStarlight.Interchange
 
         public bool IsPaused { get; private set; }
 
-        public bool HasEnded => FrameIndex >= Frames.Length && FrameTick >= TicksPerFrame;
+        public bool HasEnded => FrameIndex >= Frames.Length && FrameTick >= TicksPerFrame && !ShouldLoop;
+
+        public bool ShouldLoop { get; set; }
 
         public int TicksPerFrame { get; set; }
 
@@ -60,6 +62,7 @@ namespace ProjectStarlight.Interchange
             // This essentially sets HasEnded to true.
             FrameTick = Frames.Length - 1;
             FrameTick = TicksPerFrame;
+            ShouldLoop = false;
         }
 
         /// <summary>
@@ -139,6 +142,8 @@ namespace ProjectStarlight.Interchange
 
                 if (FrameIndex < Frames.Length - 1) 
                     FrameIndex++;
+                else if (ShouldLoop)
+                    FrameIndex = 0;
             }
         }
     }
