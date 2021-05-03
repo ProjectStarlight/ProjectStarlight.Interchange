@@ -18,8 +18,17 @@ namespace ProjectStarlight.Interchange.Utilities
         public static TextureGIF FromGIFFile(byte[] data, int ticksPerFrameOverride = -1) =>
             throw new NotImplementedException();
 
-        public static TextureGIF FromGIFFile(string filePath, int ticksPerFrameOverride = -1) =>
-            throw new NotImplementedException();
+        public static TextureGIF FromGIFFile(string filePath, int ticksPerFrameOverride = -1)
+        {
+            TextureGIF gif;
+
+            using (FileStream stream = File.OpenRead(filePath))
+            {
+                gif = FromGIFFile(stream, ticksPerFrameOverride);
+            }
+
+            return gif;
+        }
 
         public static TextureGIF FromGIFFile(FileStream stream, int ticksPerFrameOverride = -1) =>
             throw new NotImplementedException();
