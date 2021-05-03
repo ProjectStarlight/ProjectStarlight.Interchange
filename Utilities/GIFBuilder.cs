@@ -15,8 +15,9 @@ namespace ProjectStarlight.Interchange.Utilities
         public static TextureGIF FromArray(Texture2D[] frames, int ticksPerFrame) =>
             new TextureGIF(frames, ticksPerFrame);
 
-        public static TextureGIF FromGIFFile(byte[] data, int ticksPerFrameOverride = -1) =>
-            throw new NotImplementedException();
+        // NOT PLANNED
+        //public static TextureGIF FromGIFFile(byte[] data, int ticksPerFrameOverride = -1) =>
+        //    throw new NotImplementedException();
 
         public static TextureGIF FromGIFFile(string filePath, int ticksPerFrameOverride = -1)
         {
