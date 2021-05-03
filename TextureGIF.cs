@@ -73,9 +73,9 @@ namespace ProjectStarlight.Interchange
             Frames = frames;
         }
 
-        // ReSharper disable once InvalidXmlDocComment
+
         /// <summary>
-        ///     Restarts (or officially starts, if not started previously) the GIF. Render the GIF with <see cref="Draw"/>.
+        ///     Restarts (or officially starts, if not started previously) the GIF. Render the GIF with <seealso cref="Draw(SpriteBatch, Vector2, Color)"/> or one of its overloads.
         /// </summary>
         public void Play()
         {
@@ -128,28 +128,49 @@ namespace ProjectStarlight.Interchange
             // TODO: Find out if there's anything that needs to be done when pausing and unpausing.
             IsPaused = !IsPaused;
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color) =>
             spriteBatch.Draw(CurrentFrame, position, color);
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Rectangle? sourceRectangle, Color color) =>
             spriteBatch.Draw(CurrentFrame, position, sourceRectangle, color);
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Rectangle? sourceRectangle, Color color,
             float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth) =>
             spriteBatch.Draw(CurrentFrame, position, sourceRectangle, color, rotation, origin, scale, effects,
                 layerDepth);
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Rectangle? sourceRectangle, Color color,
             float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth) =>
             spriteBatch.Draw(CurrentFrame, position, sourceRectangle, color, rotation, origin, scale, effects,
                 layerDepth);
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Rectangle destinationRectangle, Color color) =>
             spriteBatch.Draw(CurrentFrame, destinationRectangle, color);
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Rectangle destinationRectangle, Rectangle? sourceRectangle,
             Color color) => spriteBatch.Draw(CurrentFrame, destinationRectangle, sourceRectangle, color);
 
+        /// <summary>
+        ///     Draws the current GIF frame.
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, Rectangle destinationRectangle, Rectangle? sourceRectangle,
             Color color, float rotation, Vector2 origin, SpriteEffects effects, float layerDepth) =>
             spriteBatch.Draw(CurrentFrame, destinationRectangle, sourceRectangle, color, rotation, origin, effects,
