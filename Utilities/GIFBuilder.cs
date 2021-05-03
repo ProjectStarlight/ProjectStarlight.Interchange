@@ -19,6 +19,9 @@ namespace ProjectStarlight.Interchange.Utilities
         public static TextureGIF FromArray(Texture2D[] frames, int ticksPerFrame) =>
             new TextureGIF(frames, ticksPerFrame);
 
+        /// <summary>
+        ///     Creates a <see cref="TextureGIF"/> from a <see cref="FileStream"/>, opened and read from the <paramref name="filePath"/>.
+        /// </summary>
         public static TextureGIF FromGIFFile(string filePath, GraphicsDevice graphicsDevice, int ticksPerFrame)
         {
             TextureGIF gif;
@@ -32,6 +35,9 @@ namespace ProjectStarlight.Interchange.Utilities
         }
 
         // https://dejanstojanovic.net/aspnet/2018/march/getting-gif-image-information-using-c/
+        /// <summary>
+        ///     Creates a <see cref="TextureGIF"/> from a <see cref="FileStream"/>.
+        /// </summary>
         public static TextureGIF FromGIFFile(FileStream stream, GraphicsDevice graphicsDevice, int ticksPerFrame)
         {
             using (Image image = Image.FromStream(stream))

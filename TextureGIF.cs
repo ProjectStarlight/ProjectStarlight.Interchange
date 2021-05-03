@@ -5,27 +5,59 @@ using ProjectStarlight.Interchange.Utilities;
 
 namespace ProjectStarlight.Interchange
 {
-    // TODO: GIF looping
+    /// <summary>
+    ///     Simple class containing GIF data for drawing and updating.
+    /// </summary>
     public class TextureGIF
     {
+        /// <summary>
+        ///     The width of the GIF.
+        /// </summary>
         public int Width { get; private set; }
 
+        /// <summary>
+        ///     The height of the GIF.
+        /// </summary>
         public int Height { get; private set; }
 
+        /// <summary>
+        ///     Whether the GIF is paused.
+        /// </summary>
         public bool IsPaused { get; private set; }
 
+        /// <summary>
+        ///     Whether the GIF has ended. Never true of the GIF loops (<seealso cref="ShouldLoop"/>).
+        /// </summary>
         public bool HasEnded => FrameIndex >= Frames.Length && FrameTick >= TicksPerFrame && !ShouldLoop;
 
+        /// <summary>
+        ///     Whether the GIF loops. Prevents the GIF from ending unless <seealso cref="Stop"/> is called.
+        /// </summary>
         public bool ShouldLoop { get; set; }
 
+        /// <summary>
+        ///     The amount of ticks per frame. Once the tick threshold is reached, goes to a new frame.
+        /// </summary>
         public int TicksPerFrame { get; set; }
 
+        /// <summary>
+        ///     The current tick the frame is on.
+        /// </summary>
         public int FrameTick { get; private set; }
 
+        /// <summary>
+        ///     The index of <seealso cref="Frames"/> that should be drawn.
+        /// </summary>
         public int FrameIndex { get; private set; }
 
-        public Texture2D[] Frames { get; set; }
+        /// <summary>
+        ///     An array of <seealso cref="Texture2D"/>s representing the frames of a GIF.
+        /// </summary>
+        public Texture2D[] Frames { get; private set; }
 
+        /// <summary>
+        ///     Gets the current frame in accordance to <seealso cref="Frames"/>, using <seealso cref="FrameIndex"/> as the index.
+        /// </summary>
         public Texture2D CurrentFrame => HasEnded ? Frames.Last() : Frames[FrameIndex];
 
         /// <summary>
@@ -123,12 +155,18 @@ namespace ProjectStarlight.Interchange
             spriteBatch.Draw(CurrentFrame, destinationRectangle, sourceRectangle, color, rotation, origin, effects,
                 layerDepth);
 
+        /// <summary>
+        ///     Increment ticks by one if the GIF is not paused and has not ended.
+        /// </summary>
         public void UpdateGIF()
         {
             if (!IsPaused && !HasEnded) 
                 ForwardTicks(1);
         }
 
+        /// <summary>
+        ///     Increments the specified amount of ticks. You can use this to skip frames as well.
+        /// </summary>
         public void ForwardTicks(int tickAmount)
         {
             for (int i = 0; i < tickAmount; i++)
