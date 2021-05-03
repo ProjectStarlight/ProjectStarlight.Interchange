@@ -1,7 +1,7 @@
 ---
 name: Issue Report
 about: Create an issue report to properly inform us of any issues or bugs.
-title: "[ISSUE REPORT]"
+title: "ISSUE REPORT"
 labels: ''
 assignees: Steviegt6
 
@@ -20,7 +20,7 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots** [OPTIONAL]
+**Screenshots** (OPTIONAL)
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
