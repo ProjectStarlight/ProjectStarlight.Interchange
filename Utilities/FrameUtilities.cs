@@ -4,6 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectStarlight.Interchange.Utilities
 {
+    /// <summary>
+    ///     Simple class providing small, useful methods for some common tasks.
+    /// </summary>
     public static class FrameUtilities
     {
         /// <summary>
