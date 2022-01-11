@@ -37,9 +37,9 @@ namespace ProjectStarlight.Interchange.Utilities
 
         // https://dejanstojanovic.net/aspnet/2018/march/getting-gif-image-information-using-c/
         /// <summary>
-        ///     Creates a <see cref="TextureGIF"/> from a <see cref="FileStream"/>.
+        ///     Creates a <see cref="TextureGIF"/> from a <see cref="Stream"/>.
         /// </summary>
-        public static TextureGIF FromGIFFile(FileStream stream, GraphicsDevice graphicsDevice, int ticksPerFrame)
+        public static TextureGIF FromGIFFile(Stream stream, GraphicsDevice graphicsDevice, int ticksPerFrame)
         {
             using (Image image = Image.FromStream(stream))
             {
