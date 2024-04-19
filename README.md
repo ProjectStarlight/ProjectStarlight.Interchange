@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Deprecation notice:** Interchange is not supported and is not maintained. We are not looking for a maintainer. Use a different tool.
+
 # ProjectStarlight.Interchance
 
 A simple library for reading and drawing GIFs for XNA and FNA.
